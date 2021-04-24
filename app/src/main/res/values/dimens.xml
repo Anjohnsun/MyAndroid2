@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>    <dimen name="calc_button_text_size">16sp</dimen>
+    <dimen name="calc_button_width">60dp</dimen>
+    <dimen name="label_text_size">16sp</dimen>
+    <dimen name="calc_label_size">40dp</dimen>
+    <dimen name="change_theme_button_width">120dp</dimen>
+    <dimen name="change_theme_button_height">80dp</dimen>
+    <dimen name="change_theme_button_text_size">14sp</dimen>
+    <dimen name="change_theme_button_margin">5dp</dimen>
+</resources>

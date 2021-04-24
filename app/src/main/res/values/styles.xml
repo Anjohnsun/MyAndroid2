@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="calcButtonStyle1" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">@dimen/calc_button_text_size</item>
+        <item name="android:backgroundTint">#FFB74C</item>
+    </style>
+
+    <style name="calcButtonStyle2" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">@dimen/calc_button_text_size</item>
+        <item name="android:backgroundTint">#033659</item>
+    </style>
+</resources>

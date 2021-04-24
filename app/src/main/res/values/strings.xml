@@ -16,4 +16,5 @@
     <string name="btn_plus">+</string>
     <string name="btn_minus">-</string>
     <string name="btn_erase">c</string>
+    <string name="change_theme_btn_text">change theme</string>
 </resources>
