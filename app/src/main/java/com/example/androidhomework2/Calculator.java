@@ -43,10 +43,14 @@ public class Calculator implements Parcelable {
     }
 
     public void newSimbol(int num) {
-        if (afterEqual){
-            label=label.substring(0, 0);
+        if (afterEqual) {
+            numbers.clear();
+            actions.clear();
+            label = label.substring(0, 0);
             afterEqual = false;
+            lastIsInt = false;
             actions.add("+");
+            result = 0;
         }
         if (!lastIsInt) {
             numbers.add(num);
@@ -73,7 +77,7 @@ public class Calculator implements Parcelable {
         afterEqual = false;
     }
 
-    public void getResult() {
+    public void calculate() {
         for (int i = 0; i < numbers.size(); i++) {
             if (actions.get(i).equals("+")) {
                 result += numbers.get(i);
@@ -83,28 +87,79 @@ public class Calculator implements Parcelable {
         }
 
         label = Integer.toString(result);
-        actions = new ArrayList<>();
-        numbers = new ArrayList<>();
+        actions.clear();
+        numbers.clear();
 
-        if(result>=0){
+        if (result >= 0) {
             actions.add("+");
             numbers.add(result);
         } else {
             actions.add("-");
             numbers.add(-result);
         }
+        result = 0;
         afterEqual = true;
     }
 
     public void eraseAll() {
-        numbers = new ArrayList<>();
-        actions = new ArrayList<>();
+        numbers.clear();
+        actions.clear();
         label = "";
         lastIsInt = false;
         afterEqual = true;
+
+        Log.d("ERASE", "numbers");
     }
 
     public String showLabel() {
         return label;
+    }
+
+    public ArrayList<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public ArrayList<String> getActions() {
+        return actions;
+    }
+
+    public boolean getIsLastIsInt() {
+        return lastIsInt;
+    }
+
+    public boolean getIsAfterEqual() {
+        return afterEqual;
+    }
+
+    public int getResult() {
+        return result;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setNumbers(ArrayList<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
+    public void setActions(ArrayList<String> actions) {
+        this.actions = actions;
+    }
+
+    public void setLastIsInt(boolean lastIsInt) {
+        this.lastIsInt = lastIsInt;
+    }
+
+    public void setAfterEqual(boolean afterEqual) {
+        this.afterEqual = afterEqual;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 }
