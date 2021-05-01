@@ -124,9 +124,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
             if (requestCode == THEME_REQUEST){
-                if (resultCode == Activity.RESULT_OK){
+                if (resultCode == -1){
                     themeStorage.setCurrentTheme(Theme.OPTION_1);
-                } else if (resultCode == Activity.RESULT_CANCELED){
+                } else if (resultCode == 0){
                     themeStorage.setCurrentTheme(Theme.OPTION_2);
                 }
             }

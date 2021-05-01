@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class ThemeMenuActivity extends AppCompatActivity {
+    private static final String RESULT_KEY = "RESULT";
     private int RESULT = 0;
     private Button light_theme;
     private Button dark_theme;
@@ -40,22 +41,26 @@ public class ThemeMenuActivity extends AppCompatActivity {
         light_theme.setOnClickListener(v -> {
             themeStorage.setCurrentTheme(Theme.OPTION_1);
             RESULT = -1;
+            recreate();
+
         });
         dark_theme.setOnClickListener(v -> {
             themeStorage.setCurrentTheme(Theme.OPTION_2);
             RESULT = 0;
+            recreate();
         });
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("RESULT", RESULT);
+        outState.putInt(RESULT_KEY, RESULT);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        RESULT = savedInstanceState.getInt("RESULT");
+        RESULT = savedInstanceState.getInt(RESULT_KEY);
+        setResult(RESULT);
     }
 }
