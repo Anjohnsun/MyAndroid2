@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThemeMenuActivity">
+
+
+    <TextView
+        android:id="@+id/menu_greeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/menu_button_margin"
+        android:text="@string/greeting"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_light_theme"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/calc_label_size"
+        android:layout_margin="@dimen/menu_button_margin"
+        android:text="@string/light_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_greeting" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_dark_theme"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/calc_label_size"
+        android:layout_margin="@dimen/menu_button_margin"
+        android:text="@string/dark_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_light_theme" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/to_calc"
+        android:layout_width="@dimen/change_theme_button_width"
+        android:layout_height="@dimen/change_theme_button_height"
+        android:layout_margin="@dimen/btn_menu_margin"
+        android:background="@color/change_theme_button"
+        android:text="@string/to_calculator"
+        android:textSize="@dimen/change_theme_button_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
