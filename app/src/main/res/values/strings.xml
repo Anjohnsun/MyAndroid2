@@ -16,5 +16,9 @@
     <string name="btn_plus">+</string>
     <string name="btn_minus">-</string>
     <string name="btn_erase">c</string>
-    <string name="change_theme_btn_text">change theme</string>
+    <string name="greeting">Меню: выберете тему приложения</string>
+    <string name="light_label">Светлая тема</string>
+    <string name="dark_label">Тёмная тема</string>
+    <string name="btn_themes">сменить тему</string>
+    <string name="to_calculator">назад</string>
 </resources>

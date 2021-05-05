@@ -1,23 +1,26 @@
 package com.example.androidhomework2;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int THEME_REQUEST = 666;
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
-    private Button btn_plus, btn_minus, btn_erase, btn_equals, change_theme;
+    private Button btn_plus, btn_minus, btn_erase, btn_equals, themeMenuBtn;
     private TextView output;
     private final int[] numberButtonIds = new int[]{R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3,
             R.id.button_4, R.id.button_5, R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9};
     private final Calculator calculator = new Calculator();
 
     private ThemeStorage themeStorage;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
         btn_minus = findViewById(R.id.button_minus);
         btn_erase = findViewById(R.id.button_erase);
         btn_equals = findViewById(R.id.button_equals);
-        change_theme = findViewById(R.id.change_theme);
-
+        themeMenuBtn = findViewById(R.id.theme_menu);
     }
 
     @Override
@@ -90,18 +92,9 @@ public class MainActivity extends AppCompatActivity {
                 output.setText(calculator.showLabel());
             }
         });
-        change_theme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (themeStorage.getCurrentTheme().equals(Theme.OPTION_1)) {
-                    themeStorage.setCurrentTheme(Theme.OPTION_2);
-                } else {
-                    themeStorage.setCurrentTheme((Theme.OPTION_1));
-                }
 
-                recreate();
-            }
-        });
+        Intent menu = new Intent(MainActivity.this, ThemeMenuActivity.class);
+        themeMenuBtn.setOnClickListener(v -> {startActivityForResult(menu, THEME_REQUEST);});
     }
 
     @Override
@@ -128,22 +121,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+            if (requestCode == THEME_REQUEST){
+                if (resultCode == -1){
+                    themeStorage.setCurrentTheme(Theme.OPTION_1);
+                } else if (resultCode == 0){
+                    themeStorage.setCurrentTheme(Theme.OPTION_2);
+                }
+            }
+            recreate();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
 }
